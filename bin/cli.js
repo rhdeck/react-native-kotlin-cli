@@ -40,7 +40,10 @@ program
     if (!projectpath) projectpath = "./" + projectname;
     makeNewProject(projectname, projectpath);
     chdir(projectpath);
-    yarnif.addDevDependency("react-native-kotlin-bridge");
+    yarnif.addDevDependency(
+      "https://github.com/rhdeck/react-native-kotlin-bridge"
+    );
+    spawnSync("yarn", ["link", "react-native-kotlin-bridge"], opts);
     spawnSync("yarn", ["run", "react-native-kotlin-bridge"], opts);
     spawnSync("yarn", ["link"], opts);
   });
@@ -69,9 +72,8 @@ program
 
     spawnSync("react-native", ["init", appname, appprojectpath], opts);
     chdir(appprojectpath);
-    spawnSync("yarn", ["add", "react-native-kotlin"], opts);
+    spawnSync("yarn", ["add", "file://" + kotlinpath], opts);
     spawnSync("yarn", ["link", kotlinprojectname], opts);
-    spawnSync("yarn", ["add", kotlinpath], opts);
     spawnSync(
       "yarn",
       [
