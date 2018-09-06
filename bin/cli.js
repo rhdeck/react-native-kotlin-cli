@@ -80,11 +80,13 @@ program
         "add",
         "react-native-update-gradle",
         "react-native-android-studio",
-        "react-native-bundlebase"
+        "react-native-bundlebase",
+        "react-native-fix-android-links"
       ],
       opts
     );
     spawnSync("react-native", ["link"], opts);
+    spawnSync("react-native", "fix-android-links");
     copyAndReplace(__dirname + "/../templates/App.js", "./App.js", {
       rnkotlintemplate: kotlinprojectname
     });
