@@ -8,6 +8,6 @@
     "bridge": "react-native-kotlin-bridge",
     "watch": "react-native-kotlin-bridge --watch"
   },
-  "main": "index.js",
+  "main": "react-kotlin-bridge.js",
   "isKotlin": true
 }
